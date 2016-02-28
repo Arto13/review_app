@@ -5,7 +5,7 @@ class MoviesController < ApplicationController
          count: Movie.count,
          page: 0
        },
-       movies: Movie.all
+       movies: Movie.order(id: :asc)
      }
    end
    def create
@@ -20,7 +20,7 @@ class MoviesController < ApplicationController
       end
 
       def update
-        movie = movie.find(params[:id])
+        movie = Movie.find(params[:id])
 
         if movie.update(movie_params)
           render json: { movie: movie }
@@ -33,7 +33,7 @@ class MoviesController < ApplicationController
       end
 
       def destroy
-        movie = movie.find(params[:id])
+        movie = Movie.find(params[:id])
 
         if movie.destroy
           render json: { movie: nil }
