@@ -5,7 +5,7 @@ class MoviesController < ApplicationController
          count: Movie.count,
          page: 0
        },
-       movies: Movie.order(id: :asc)
+       movies: Movie.order(:completed, :id)
      }
    end
    def create
